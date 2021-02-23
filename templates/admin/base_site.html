@@ -1,0 +1,19 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block branding %} 
+    <a href="{% url 'index' %}" > <img width="30%" src="{% static 'images/logo-white.png' %}" /> </a> 
+{% endblock %}
+
+<div id="header">
+<div id="user-tools">
+
+    
+
+    <strong>
+        {{user.first_name}} خوش آمدید
+    </strong>
+</div>
+</div>
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+{%endblock  %}

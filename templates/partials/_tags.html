@@ -1,0 +1,8 @@
+<div id="tags">
+										
+    <h6> برچسب‌ها: </h6>
+    {% for tag in tags %}
+        <a href="/search/tags?tag={{tag}}&page_number=1"> #{{tag}} </a>
+    {% endfor %}
+    
+</div>

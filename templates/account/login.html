@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="{% static 'images/icon.png' %}" />
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.png"' %}" />
+	
+	<!-- FONTS -->
+	<link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+
+	<!-- PAGE TITLE HERE -->
+	<title>مجله - majalleh</title>
+
+	<!-- STYLE SHEETS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/templete.css' %}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{% static 'css/skin/skin-1.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/logsign.css' %}">
+
+</head>
+<body>
+	<div id="ls-box" class="container">
+		<div class="form">
+			<div class="title">
+				<a href="{% url 'index' %}"> <img src=" {% static 'images/logo.png' %}"> </a>
+
+				<br/>
+				<h2> ورود به حساب کاربری </h2>
+			</div>
+			<form action="{% url 'login' %}" method="POST">
+			{% csrf_token %}
+				
+				{% include 'partials/_alerts.html' %}
+				
+				<div class="input-group container">
+					<span class="input-group-append">
+					<button type="submit" class="btn-sm fa-btn"><i class="fa fa-user fa-btn"></i></button>
+					</span> 
+					<input name="username" type="text" class="form-control" placeholder="نام کاربری (انگلیسی وارد شود)">
+				</div>
+
+				<div class="input-group container">
+					<span class="input-group-append">
+					<button type="submit" class="btn-sm fa-btn"><i class="fa fa-key fa-btn"></i></button>
+					</span> 
+					<input name="password" type="password" class="form-control" placeholder="رمزعبور">
+				</div>
+				
+				
+				<input type="submit" value="ورود"  class="btn btn-secondary btn-fa"/>
+				<br/>
+				<a href="{% url 'register' %}" class="link"> هنوز ثبت نام نکردی؟ </a>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

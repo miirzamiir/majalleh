@@ -1,0 +1,127 @@
+{% load static %} 
+ <header class="site-header mo-left header">
+		<!-- top-bar -->
+		<div class="container">
+			<div class="top-bar">
+				<div class="row d-flex justify-content-between align-items-center">
+					<div class="dlab-topbar-left">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							{% if user.is_authenticated %}
+								{% if 'dashboard' in request.path %}
+								<a href="{% url 'new_article' %}" class="btn btn-secondary">نوشته جدید</a>
+								<a href="{% url 'edit_profile' %}" class="btn btn-secondary">ویرایش پروفایل</a>
+								{% else %}
+								<a href="{% url 'new_article' %}" class="btn btn-secondary">نوشته جدید</a>
+								<a href="{% url 'dashboard' %}" class="btn btn-secondary">پنل کاربری</a>
+								{% endif %}
+							 	
+							{% else %}
+								<a href="{% url 'login' %}" class="btn btn-secondary">ورود</a>
+								<a href="{% url 'register' %}" class="btn btn-secondary"> ثبت نام</a>
+							{% endif %}
+                            
+                        </div>
+					</div>
+					<!-- website logo -->
+					<div class="logo-header">
+						<a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+					</div>
+					<div class="dlab-topbar-right topbar-social">
+					
+                        <form action="{% url 'search' %}" method="GET" id="SearchBox">
+                            <input type="text" name="q" placeholder="جستجو در مجله ..." id="qinput" />
+                            {% comment %} <a href="" class="btn-md btn-secondary" id="qclick"> <i class="fa fa-search" aria-hidden="true"></i> </a> {% endcomment %}
+                            <div id="qcl" onclick="javascript:{ document.getElementById('SearchBox').submit() }" > <i class="fa fa-search" aria-hidden="true"></i></div>
+                        </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- top-bar end -->
+		<!-- main header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container">
+					<div class="header-content-bx no-bdr">
+						<!-- website logo -->
+						<div class="logo-header">
+							<a href="index.html"><img src="images/logo.png" alt=""/></a>
+						</div>
+						<!-- nav toggle button -->
+						<button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<!-- main nav -->
+						<div class="header-nav navbar-collapse collapse justify-content-center" id="navbarNavDropdown">
+							<div class="logo-header">
+								<a href="index.html"><img src="images/logo-white.png" alt=""/></a>
+							</div>
+							<ul class="nav navbar-nav">	
+								<li 
+								{%if request.path == '/' %}
+										class="active">
+										<a href="#">صفحه اصلی <i class="fa fa-chevron-down"></i></a>
+								{% else %}		
+								>
+									<a href="{% url 'index' %}">صفحه اصلی <i class="fa fa-chevron-down"></i></a>
+								{% endif%}
+								</li>
+								<li>
+									<a href="#">دسته بندی <i class="fa fa-chevron-down"></i></a>
+									<ul class="sub-menu">
+										{% for category in categories %}
+											<li><a href="/search/category?category={{category.name}}&page_number=1"> {{category.name}} </a> </li>
+										{% endfor %}
+									
+									</ul>
+								</li>
+								<li
+								{% if 'about' in request.path %}
+									class="has-mega-menu post-slider life-style active"
+
+								{% else %}
+									class="has-mega-menu post-slider life-style"
+								{% endif %}
+								>
+									<a href="{% url 'about' %}">درباره ما<i class="fa fa-chevron-down"></i></a>
+								</li>
+								<li>
+									{% if user.is_authenticated %}
+										{% if 'dashboard' in request.path %}
+											<a href="#">نوشته جدید<i class="fa fa-chevron-down"></i></a>
+										{% else %}
+											<a href="{% url 'dashboard' %}">پنل کاربری<i class="fa fa-chevron-down"></i></a>
+										{% endif %}
+									{% else %}
+										<a href="{% url 'login' %}">ورود<i class="fa fa-chevron-down"></i></a>
+									{% endif %}
+									
+								</li>
+								<li>
+									{% if user.is_authenticated %}
+										<a onclick="javascript:{ document.getElementById('logout').submit()}">خروج</a>
+										<form action="{% url 'logout' %}" method="POST" id="logout">{% csrf_token %}</form>
+									{% else %}
+										<a href="{% url 'register' %}">ثبت نام<i class="fa fa-chevron-down"></i></a>
+									{% endif %}
+									
+								</li>
+							</ul>
+							<div class="social-menu">
+								<ul>
+									<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <!-- main header END -->
+    </header>

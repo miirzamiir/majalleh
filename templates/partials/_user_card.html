@@ -1,0 +1,27 @@
+{% load static %}
+<div class="author-box blog-user m-b60">
+    <div class="author-profile-info">
+        <div class="author-profile-pic">
+            <a 
+            {% if profile.photo != None or profile%}
+                href="{{profile.photo.url}}"
+            {% else %}
+                href="{% static 'images/icon.png' %}"
+            {% endif %}
+            >
+
+            <img
+             {% if profile.photo == None or profile%}
+                src="{{profile.photo.url}}"
+            {% else %}
+                src="{% static 'images/icon.png' %}"
+            {% endif %}
+              alt=""></a>
+        </div>
+        <div class="author-profile-content">
+            <a href="#"><h6> {{profile.user.first_name}} {{profile.user.last_name}}</h6></a>
+            <p> {{profile.bio}} </p>
+            
+        </div>
+    </div>
+</div>

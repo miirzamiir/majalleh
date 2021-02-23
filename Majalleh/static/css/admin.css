@@ -1,0 +1,36 @@
+
+#header{
+    background-color: rgba(0, 0, 0, 0.781);
+}
+
+div.breadcrumbs{
+    background-color: #ccc;
+    color: rgba(0, 0, 0, 0.781);;
+}
+
+div.breadcrumbs > a{
+    color: rgba(0, 0, 0, 0.781);;
+}
+
+#changelist-filter > h2{
+    background-color: rgba(0, 0, 0, 0.781);;
+}
+
+ul.object-tools > li > a:hover{
+    background-color: rgba(0, 0, 0, 0.781);;
+}
+
+#content-main > div.module > table > caption{
+    background-color: rgba(0, 0, 0, 0.781);;
+}
+#content-main > div.module > table > tbody > tr > th> a{
+    color: rgba(0, 0, 0, 0.781);
+}
+
+div.submit-row > input.default{
+    background-color: rgb(89, 207, 98);
+}
+
+nav.sticky > div.module > table > caption{
+    background-color: rgba(0, 0, 0, 0.781);
+}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-block">
+
+        
+			<!-- load-more-content -->
+			<div class="section-full bg-white content-inner-2" >
+                <div class="container">
+                    <div class="row">
+						<div class="col-xl-9 col-lg-8 col-md-7 col-sm-12 col-12">
+							<div class="section-head text-center">
+								
+								<div class="">
+									<br>
+									<h3>  برچسب  '{{q}}' <i class="fa fa-search"> </i></h3>
+									<hr>
+									<br/>
+								</div>
+                            </div>
+							<div class="loadmore-content">
+								<div class="row" id="masonry">
+									{% for article in articles %}
+                                        <div class="col-lg-6 col-md-12 col-sm-6 card-container">
+                                            <div class="blog-card post-grid">
+                                                <div class="blog-card-media">
+                                                    <img src="{{article.photo.url}}" alt=""/>
+                                                </div>
+                                                <div class="blog-card-info">
+
+                                                    <h4 class="title"><a href="{% url 'article' article.id %}">{{article.title}}</a></h4>
+                                                    <div class="title-sm"><a href="{% url 'author' article.author.username %}">{{article.author.first_name}} {{article.author.last_name}}</a></div>
+                                                    <p>{{article.summary}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    
+
+								</div>
+								<div class="row">
+									
+									{% if articles.has_other_pages %}
+									<div class="pagination-bx rounded text-center">
+										<ul class="pagination justify-content-center">
+
+										{% comment %} PREVIOUS PAGE PAGINATION {% endcomment %}
+										<li class="previous">
+										{% if articles.has_previous %}
+											<a href="?q={{requset.q}}&page_number={{articles.previous_page_number}}"><i class="la la-angle-left"></i></a></li>
+										{% else %}
+											<a class="disabled" href="#"><i class="la la-angle-left"></i></a></li>
+										{% endif %}
+
+										
+										{% comment %} NUMBERS {% endcomment %}
+										{% for i in articles.paginator.page_range %}
+											{% if articles.number == i %}
+												<li class="active"><a href="#">{{i}}</a></li>
+											{% else %}
+												<li class=""><a href="?q={{request.q}}&page_number={{i}}">{{i}}</a></li>
+											{% endif %}
+
+										
+										{% endfor %}
+
+										{% comment %} NEXT PAGE PAGINATION {% endcomment %}
+										<li class="next">
+										{% if articles.has_next %}
+											<a href="?q={{request.q}}&page_number={{articles.next_page_number}}">	
+										{% else %}
+											<a href="#">
+										{% endif %}	
+										<i class="la la-angle-right"></i></a></li>
+										</ul>
+									</div>
+
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12">	
+							<div class="side-bar p-l30 sticky-top">
+								<div class="widget widget-newsletter text-center">
+									<form class="dzSubscribe dezPlaceAni">
+										<div class="news-back form-style">
+											<h4>تو"مجله"عضو شو!</h4>
+											
+                                            <a href="#" class="btn btn-secondary"> ثبت نام</a>
+											<div class="dzSubscribeMsg"></div>
+										</div>
+									</form>
+								</div>
+								<div class="widget widget-social">
+									<h6 class="widget-title"><span>مجله در شبکه‌های اجتماعی</span></h6>
+									<ul>
+										<li><a href="https://t.co/W8JW8Zfd5d?amp=1" class="site-button-link"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://twitter.com/miirzamiir" class="site-button-link"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="https://github.com/miirzamiir" class="site-button-link"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://instagram.com/miirzamiir" class="site-button-link"><i class="fa fa-instagram"></i></a></li>
+									</ul>
+									<div class="advertise text-center m-b20">
+										<img src="images/add.png" alt=""/>
+									</div>
+								</div>
+								<div class="widget widget-stories">
+									<h6 class="widget-title"><span>جدیدترین مطالب</span></h6>
+									<div id="minislider1" class="post-carousel owl-carousel owl-theme owl-none owl-btn-3">
+										{% for slide in slider %}
+                                        <div class="item">
+											<img src="{{slide}}" alt=""/>
+										</div>
+                                        {% endfor %}
+                                        
+									</div>
+								</div>
+								{% include 'partials/_left_bar_tags.html' %}
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- load-more-content end -->
+		</div>
+
+
+{% endblock content %}

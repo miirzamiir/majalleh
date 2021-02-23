@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	 <!-- Content -->
+    <div class="page-content bg-white">
+		<div class="content-block">
+            <!-- About Us -->
+            <div class="section-full content-inner bg-white">
+                <div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-head text-center " id="profile-title">
+								<h3 class="title-head">تکمیل پروفایل کاربر </h3>
+								<hr>
+							</div>
+						</div>
+					</div>
+					<div>
+						<form class="shop-form row" action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data" >
+							{% csrf_token %}
+							<div class="col-xl-7 col-lg-6 col-md-6 col-sm-6 m-b30 form">
+								{% include 'partials/_alerts.html' %}
+								<div class="row sp20">
+									<div class="form-group col-lg-6">
+										<input name="first_name" type="text" value="{{user.first_name}}" class="form-control" placeholder="نام" required />
+									</div>
+									<div class="form-group col-lg-6">
+										<input name="last_name" type="text" value="{{user.last_name}}" class="form-control" placeholder="نام خانوادگی" required />
+									</div>
+								</div>
+								<div class="row sp20">
+									<div class="form-group col-lg-6">
+										<input name="username" type="text" value="{{user.username}}" class="form-control" placeholder="نام کاربری" required>
+									</div>
+									<div class="form-group col-lg-6">
+										<input name="email" type="text" value="{{user.email}}" class="form-control" placeholder="ایمیل" required>
+									</div>
+								</div>
+								
+								
+								
+								<div class="row sp20">
+									<div class="form-group col-lg-6">
+										<input name="phone" type="text" value="{{profile.phone}}" class="form-control" placeholder="شماره تلفن">
+									</div>
+									<div class="form-group col-lg-6">
+										<input name="age" type="number" value="{{profile.age}}" min="16" max="100" class="form-control" placeholder="سن">
+									</div>
+								</div>
+								<input  type="file" id="profile-pic" name="pic"/>
+
+								<div class="form-group col-log-6">
+									<label for="profile-pic" class="btn btn-secondary">
+										<i class="fa fa-upload"></i> عکس پروفایل
+									</label>	
+									
+								</div>
+								<div class="form-group">
+									<textarea  class="form-control" rows="5" name="bio" placeholder="خودت رو توصیف کن ...">{{profile.bio}}</textarea>
+								</div>
+								
+								<br/>
+								<br/>
+
+								<input id="profile-submit" class="btn btn-secondary" type="submit" value="ذخیره" />
+
+							</div>
+						</form>
+					</div>
+				</div>
+            </div>
+			<!-- About Us End -->
+        </div>
+		<!-- contact area END -->
+    </div>
+    <!-- Content END-->
+       
+{% endblock content %}

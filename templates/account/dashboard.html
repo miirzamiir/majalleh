@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="content-block">
+        
+			<!-- load-more-content -->
+			<div class="section-full bg-white content-inner-2" >
+                <div class="container">
+                    <div class="row">
+						<div id="dash" class="col-xl-9 col-lg-8 col-md-7 col-sm-12 col-12">
+							<div class="section-head text-center">
+								<h3 class="title-head"> پنل کاربری  {{user.first_name}} {{user.last_name}} </h3>
+								{% include 'partials/_user_card.html' %}
+								<br />
+								<br />
+								<br />
+								<h3 class="title-head">  نوشته‌های شما  </a></h3>
+                                <hr/>
+                            </div>
+							<div class="loadmore-content">
+								
+								<div class="row" id="masonry">
+									{% for article in articles %}
+										<div class="col-lg-6 col-md-12 col-sm-6 card-container">
+										<div class="blog-card post-grid">
+											<div class="blog-card-media">
+												<img src="{{article.photo.url}}" alt=""/>
+											</div>
+											<div class="blog-card-info">
+
+												<h4 class="title"><a href="{% url 'article' article.id %}">{{article.title}}</a></h4>
+                                                <div class="title-sm"><a href="{% url 'author' article.author.username %}"> {{article.author.first_name}} {{article.author.last_name}}</a></div>
+												<p>{{article.summary}}</p>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+                                    
+
+								</div>
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- load-more-content end -->
+		</div>
+       
+{% endblock content %}

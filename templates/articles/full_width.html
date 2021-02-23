@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="page-content bg-white">
+		<div class="content-block">
+            <!-- About Us -->
+            <div class="section-full content-inner bg-white">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-head text-center">
+								<h2 class="title-head">{{article.title}}</h2>
+								
+								<div class="title-sm">نوشته‌ای از:<a href="javascript:void(0);"> {{article.author.first_name}} {{article.author.last_name}} </a></div>
+							</div>
+							<div class="dlab-post-media blog-single">
+								<a href="{{article.photo.url}}"><img src="{{article.photo.url}}" alt=""></a>
+							</div>
+							<div class="blog-post blog-single blog-post-style-2">
+								<div class="dlab-post-info">
+									<div class="dlab-post-text text">
+										<p> {{article.text | safe}}
+									</div>
+									<br/>
+									{% include 'partials/_tags.html' %}
+									<div class="blog-card-info style-1 no-bdr">
+										<div class="date">
+											{{article.date}}
+										</div>
+									
+									</div>
+								</div>
+							</div>
+							<div class="min-container">
+								<div class="">
+								
+								{% include 'partials/_user_card.html' %}
+								
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<!-- About Us End -->
+			
+        </div>
+		<!-- contact area END -->
+    </div>
+    <!-- Content END-->
+
+{% endblock content %}

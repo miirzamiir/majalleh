@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-content bg-white">
+		<div class="content-block">
+            <!-- About Us -->
+             <div class="section-full content-inner bg-white">
+                <div class="container">
+					<div class="row">
+						<div class="col-xl-9 col-lg-8 col-md-7 col-sm-12 col-12">
+							<div class="section-head text-center">
+								<h2 class="title-head"><a href="{% url 'full_width' article.id %}"> {{article.title}}</a></h2>
+								
+								<div class="title-sm">نوشته‌ای از:<a href="{% url 'author' profile.user.username %}"> {{profile.user.first_name}} {{profile.user.last_name}} </a></div>
+							</div>
+							<div class="blog-post blog-single blog-post-style-2 sidebar">
+								<div class="dlab-post-info">
+									<div class="dlab-post-text text">
+										<div class="alignwide">
+											<figure class="aligncenter">
+												<img src="{{article.photo.url}}" alt="">
+											</figure>
+										</div>
+										<p> {{article.text | safe }}</p>
+									</div>
+									<br/>
+									{% include 'partials/_tags.html' %}
+									<div class="blog-card-info style-1 no-bdr">
+										<div class="date">
+											{{article.date }}
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="">
+								
+								{% include 'partials/_user_card.html' %}
+								
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12">	
+							<div class="side-bar p-l30 sticky-top">
+								<div class="widget widget-newsletter text-center">
+									<form class="dzSubscribe dezPlaceAni">
+										<div class="news-back form-style">
+											<h4>تو"مجله"عضو شو!</h4>
+											
+                                            <a href="#" class="btn btn-secondary"> ثبت نام</a>
+											<div class="dzSubscribeMsg"></div>
+										</div>
+									</form>
+								</div>
+								<div class="widget widget-social">
+									<h6 class="widget-title"><span>مجله در شبکه‌های اجتماعی</span></h6>
+									<ul>
+										<li><a href="https://t.co/W8JW8Zfd5d?amp=1" class="site-button-link"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://twitter.com/miirzamiir" class="site-button-link"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="https://github.com/miirzamiir" class="site-button-link"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://instagram.com/miirzamiir" class="site-button-link"><i class="fa fa-instagram"></i></a></li>
+									</ul>
+									<div class="advertise text-center m-b20">
+										<img src="images/add.png" alt=""/>
+									</div>
+								</div>
+								<div class="widget widget-stories">
+									<h6 class="widget-title"><span>جدیدترین مطالب</span></h6>
+									<div id="minislider1" class="post-carousel owl-carousel owl-theme owl-none owl-btn-3">
+										{% for slide in slider %}
+											<div class="item">
+												<img src="{{slide}}" alt=""/>
+											</div>
+										{% endfor %}
+										
+										
+									</div>
+								</div>
+								{% include 'partials/_left_bar_tags.html' %}
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<!-- About Us End -->
+
+        </div>
+		<!-- contact area END -->
+    </div>
+    <!-- Content END-->
+
+	{% endblock content %}
