@@ -10,6 +10,6 @@ ideas,opinions,result of your researches and anything else here is the
 right place to do that.
 
 Thanks for reading this document.\
- With regards.\
+With regards.\
 miirzamiir
 
