@@ -1,4 +1,4 @@
-Welcome to our project 'majalleh'
+Welcome to 'majalleh'
 =================================
 
 * * * * *
