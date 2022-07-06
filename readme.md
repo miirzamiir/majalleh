@@ -9,6 +9,3 @@ articles and share it with other.
 'Majalleh' is created with django for backend.
 
 Thanks for reading this document.\
-With regards.\
-miirzamiir
-
