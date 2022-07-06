@@ -8,4 +8,4 @@ category limits.You can simply create an account and start writing your
 articles and share it with other. 
 'Majalleh' is created with django for backend.
 
-Thanks for reading this document.\
+Thanks for reading this document.
